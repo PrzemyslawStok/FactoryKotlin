@@ -45,8 +45,27 @@ class Audi: Car{
 
 }
 
+class Mercedes:Car{
+    override fun drive() {
+
+    }
+
+    override fun stop() {
+
+    }
+
+    override fun primaryFunction() {
+
+    }
+
+    override fun carInfo() {
+        println("MERCEDES")
+    }
+
+}
+
 enum class CarType{
-    BMW,AUDI
+    BMW,AUDI,MERCEDES
 }
 
 class CarFactory{
@@ -55,14 +74,15 @@ class CarFactory{
             return when(carType){
                 CarType.BMW->BMW()
                 CarType.AUDI->Audi()
+                CarType.MERCEDES->Mercedes()
             }
         }
 
         fun createRandomCar():Car{
-            val random = (Math.random()*CarType.values().size).toInt()
+            //val random = (Math.random()*CarType.values().size).toInt()
             val rand1 = Random.nextInt(0,CarType.values().size)
 
-            return createCar(CarType.values()[random])
+            return createCar(CarType.values()[rand1])
         }
     }
 }
