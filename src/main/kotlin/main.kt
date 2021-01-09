@@ -16,6 +16,7 @@ class BMW: Car{
     }
 
     override fun primaryFunction() {
+        println("drift...")
     }
 
     override fun carInfo() {
@@ -33,6 +34,7 @@ class Audi: Car{
     }
 
     override fun primaryFunction() {
+        println("Przemieszczanie się")
     }
 
     override fun carInfo() {
@@ -49,6 +51,8 @@ class CarFactory{
     companion object{
         fun createCar(carType: CarType):Car?{
             return when(carType){
+                CarType.BMW->BMW()
+                CarType.AUDI->Audi()
                 else->null
             }
         }
