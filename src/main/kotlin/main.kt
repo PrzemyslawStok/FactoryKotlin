@@ -97,6 +97,4 @@ fun main(){
         CarFactory.createRandomCar().carInfo()
 
 
-
-
 }
