@@ -1,3 +1,5 @@
+import kotlin.random.Random
+
 interface Car{
     fun drive()
     fun playMusic(){
@@ -49,19 +51,32 @@ enum class CarType{
 
 class CarFactory{
     companion object{
-        fun createCar(carType: CarType):Car?{
+        fun createCar(carType: CarType):Car{
             return when(carType){
                 CarType.BMW->BMW()
                 CarType.AUDI->Audi()
-                else->null
             }
+        }
+
+        fun createRandomCar():Car{
+            val random = (Math.random()*CarType.values().size).toInt()
+            val rand1 = Random.nextInt(0,CarType.values().size)
+
+            return createCar(CarType.values()[random])
         }
     }
 }
 
 fun main(){
-    val car1: Car? = CarFactory.createCar(CarType.BMW)
-    val car2: Car? = CarFactory.createCar(CarType.AUDI)
+    val car1: Car = CarFactory.createCar(CarType.BMW)
+    val car2: Car = CarFactory.createCar(CarType.AUDI)
 
-    car1?.carInfo()
+    car1.carInfo()
+
+    for(i in 1..100)
+        CarFactory.createRandomCar().carInfo()
+
+
+
+
 }
