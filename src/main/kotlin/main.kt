@@ -48,7 +48,9 @@ enum class CarType{
 class CarFactory{
     companion object{
         fun createCar(carType: CarType):Car?{
-            return null
+            return when(carType){
+                else->null
+            }
         }
     }
 }
